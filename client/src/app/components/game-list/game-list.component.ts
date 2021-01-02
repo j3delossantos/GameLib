@@ -29,6 +29,9 @@ export class GameListComponent implements OnInit {
   }
 
   deleteGame(id: string){
+   let confimation = confirm("Estas seguro de eliminar este juego?" );
+   if (confimation)
+   {
     this.gamesService.deleteGame(id).subscribe(
       res =>{
         console.log(res);
@@ -37,6 +40,12 @@ export class GameListComponent implements OnInit {
       err => console.log(err)
     
     )
+
+    
+   }
+
+    
+   
   }
 
  

@@ -53,8 +53,11 @@ export class GameFormComponent implements OnInit {
   }
 
   updateGame(){
-    const params = this.activedRoute.snapshot.params;
-    this.gamesService.updateGame(params.id, this.game).subscribe(
+    let confirmation = confirm("Esta seguro que de acttualizar este juego?");
+    if(confirmation){
+
+      const params = this.activedRoute.snapshot.params;
+      this.gamesService.updateGame(params.id, this.game).subscribe(
       res=>{
         console.log(res);        
         this.router.navigate(['/games'])
@@ -62,6 +65,12 @@ export class GameFormComponent implements OnInit {
       },
       err => console.log(err)
     )
+
+    }
+
+
+
+    
   }
 
 }
